@@ -45075,7 +45075,8 @@ azT:function azT(){},
 c2I(a,b,c,d){return new A.io(a,b,c)},
 bb(){var s=A.cfr()
 return new A.azW(s,new A.h4())},
-cfr(){return"https://hrms-api.onrender.com/api"},
+cfr(){var s="https://hrms-api-s75e.onrender.com/api"
+return s},
 io:function io(a,b,c){this.a=a
 this.b=b
 this.d=c},
