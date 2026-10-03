@@ -18,6 +18,10 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <!-- Flutter replaces this with its own viewport tag once the engine starts;
+       this one keeps phones from rendering the loading screen at 980px. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#35518E">
   <meta name="description" content="Houston Systems HRMS application.">
 
   <!-- iOS meta tags & icons -->
@@ -31,8 +35,35 @@
 
   <title>Houston Systems HRMS</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    html, body { margin: 0; height: 100%; background: #f4f7fc; }
+    #app-loading {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 16px;
+      font: 15px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #35518E;
+    }
+    #app-loading .spinner {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 3px solid rgba(53, 81, 142, 0.2); border-top-color: #35518E;
+      animation: app-loading-spin 0.9s linear infinite;
+    }
+    @keyframes app-loading-spin { to { transform: rotate(360deg); } }
+  </style>
 </head>
 <body>
+  <!-- Shown while the ~5 MB app downloads on mobile data; removed on the
+       first Flutter frame so it never covers the app. -->
+  <div id="app-loading" role="status">
+    <img src="icons/Icon-192.png" width="72" height="72" alt="">
+    <div class="spinner"></div>
+    <div>Loading Houston Systems HRMS…</div>
+  </div>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var el = document.getElementById('app-loading');
+      if (el) el.remove();
+    });
+  </script>
   <script src='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.min.mjs' type='module'></script>
   <script type='module'>
   var { pdfjsLib } = globalThis;
